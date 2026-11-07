@@ -429,6 +429,29 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .gallery--overlay a:hover span,
 .gallery--overlay a:focus-visible span { opacity: 1; }
 
+/* ===== 대량 주문 페이지 (본문 폭 1200, 제목 y207, 사진 y352, 전화 문의 y740) ===== */
+.bulk-page { padding: 46px 0 75px; }
+.bulk-page .container { padding: 0 40px; }
+.bulk-lead { margin-top: 20.8px; font-size: 22px; line-height: 26.8px; }
+.bulk-page .gallery { margin-top: 35px; }
+.bulk-page .divider { margin-top: 95px; }
+
+/* 테두리 없는 사진 목록: 사진 아래 이름 (위아래 여백만) */
+.gallery--plain a { border: 0; background: none; }
+.gallery--plain img { aspect-ratio: 292.5 / 219; }
+.gallery--plain span { padding: 10px 0; }
+
+.bulk-call {
+  display: grid;
+  grid-template-columns: 158.3px 1fr;
+  gap: 50px;
+  align-items: start;
+  margin-top: 30px;
+}
+.bulk-call-title { font-size: 22px; font-weight: 700; line-height: 26.8px; }
+.bulk-call .call-button { padding: 8px 20px; }
+.bulk-call + .divider { margin-top: 30px; }
+
 /* 사진 크게 보기: 검정 90% 배경, 위쪽 순번·버튼, 양옆 화살표, 아래 이름 */
 .lightbox {
   position: fixed;
@@ -597,6 +620,18 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .gallery img { aspect-ratio: 175.5 / 133; }   /* 원본 모바일 사진 높이 133px */
   .gallery span { padding: 6.67px; }
   .gallery--overlay span { padding: 20px; }
+
+  .bulk-page { padding: 46px 0 60px; }                     /* 제목 y141 */
+  .bulk-page .container { padding: 0 15px; }
+  .bulk-lead { margin-top: 22.6px; font-size: 16px; line-height: 21.8px; }
+  .bulk-page .gallery { margin-top: 32.5px; }              /* 사진 y307 */
+  .gallery--plain img { aspect-ratio: 177.5 / 133; }
+  .gallery--plain span { padding: 6.67px 0; }
+  .bulk-page .divider { margin-top: 77.5px; }              /* y727 */
+  .bulk-call { display: block; }
+  .bulk-call-title { font-size: 16px; line-height: 21.8px; }
+  .bulk-call > div { margin-top: 30px; }                   /* 버튼 y810 */
+  .bulk-call + .divider { margin-top: 30px; }
   .lb-caption { line-height: 28.8px; }
 }
 
