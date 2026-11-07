@@ -392,6 +392,115 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .category-grid a:hover span,
 .category-grid a:focus-visible span { opacity: 0; }
 
+/* ===== 카테고리 페이지 (제목 y196, 사진 목록 y281–, 4열 · 칸 사이 10px) ===== */
+.gallery-page { padding: 35px 0 20px; }
+.page-title { font-size: 33.42px; font-weight: 400; line-height: 40.1px; }
+
+.gallery {
+  margin-top: 45px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.gallery a {
+  display: block;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #eee;
+}
+.gallery img { width: 100%; height: auto; aspect-ratio: 303 / 228; object-fit: cover; }
+.gallery span { display: block; padding: 10px; font-size: 14px; line-height: 22.4px; }
+
+/* 이름이 사진 위에 겹치는 목록(밥 · 샐러드 · 기타): 평소엔 사진만, 마우스 올리면 반투명 막 + 흰 이름 */
+.gallery--overlay a { position: relative; background: none; }
+.gallery--overlay span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+  background: rgba(0, 0, 0, .5);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.gallery--overlay a:hover span,
+.gallery--overlay a:focus-visible span { opacity: 1; }
+
+/* 사진 크게 보기: 검정 90% 배경, 위쪽 순번·버튼, 양옆 화살표, 아래 이름 */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  color: #999;
+  background: rgba(0, 0, 0, .9);
+  opacity: 0;
+  transition: opacity .15s;
+}
+.lightbox.is-open { opacity: 1; }
+.lb-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  overflow: hidden;
+  touch-action: none;
+}
+.lb-image {
+  max-width: 100%;
+  max-height: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform .3s cubic-bezier(0, 0, .25, 1), opacity .15s;
+}
+.lb-image.is-loading { opacity: 0; }
+.lightbox.is-zoomed .lb-image { cursor: grab; }
+.lightbox.is-dragging .lb-image { cursor: grabbing; transition: opacity .15s; }
+
+.lb-toolbar { position: absolute; top: 0; left: 0; right: 0; display: flex; }
+.lb-counter { margin-right: auto; padding: 12px 0 0 20px; font-size: 16px; line-height: 25.6px; }
+.lb-toolbar button,
+.lb-prev,
+.lb-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  transition: color .2s linear;
+}
+.lb-toolbar button { width: 50px; height: 47px; }
+.lb-toolbar button:hover,
+.lb-prev:hover,
+.lb-next:hover { color: #fff; }
+.lb-toolbar button:disabled { opacity: .5; color: #999; cursor: default; }
+.lb-prev,
+.lb-next {
+  position: absolute;
+  top: 50%;
+  width: 42px;
+  height: 39px;
+  margin-top: -10px;
+  background: rgba(0, 0, 0, .1);
+  border-radius: 2px;
+}
+.lb-prev { left: 20px; }
+.lb-next { right: 20px; }
+.lb-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 20px 25px;
+  font-size: 19.2px;
+  line-height: 23.04px;
+  color: #fff;
+  pointer-events: none;
+}
+
 /* ===== 푸터 (흰 배경, 12px #404040 가운데 정렬) ===== */
 .site-footer {
   padding: 35px 0 40px;
@@ -481,4 +590,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .menu-page { padding: 8px 0 10px; }    /* 다운로드 버튼 y103 */
   .category-grid { margin-top: 17px; grid-template-columns: repeat(2, 1fr); gap: 5px; }   /* 타일 y150 */
   .category-grid a { aspect-ratio: 177.5 / 135; }
+
+  .gallery-page { padding: 16px 0 10px; }                  /* 제목 y111 */
+  .page-title { font-size: 26px; line-height: 31.2px; }
+  .gallery { margin-top: 30px; grid-template-columns: repeat(2, 1fr); gap: 5px; }
+  .gallery img { aspect-ratio: 175.5 / 133; }   /* 원본 모바일 사진 높이 133px */
+  .gallery span { padding: 6.67px; }
+  .gallery--overlay span { padding: 20px; }
+  .lb-caption { line-height: 28.8px; }
+}
+
+/* ≤767px: 카테고리 제목 24px (제목 y123, 사진 목록 y179) */
+@media (max-width: 767px) {
+  .gallery-page { padding-top: 28px; }
+  .page-title { font-size: 24px; line-height: 28.8px; }
+  .gallery { margin-top: 27px; }
 }
