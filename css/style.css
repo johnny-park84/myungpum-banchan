@@ -3,9 +3,9 @@
 
 /* ===== 폰트 =====
    Montserrat · Noto Sans KR 은 Google Fonts(<link>), SUITE 는 fonts/ 에 직접 호스팅
+   (SUITE v2.0.4, SIL OFL 1.1 – fonts/SUITE-LICENSE.txt)
    Montserrat 는 500·700 만 불러옴: 원본(예전 Montserrat)처럼 영문·숫자가 굵게 보이도록,
    본문 400 요청 시 브라우저가 Montserrat 500 을 고르고 한글은 Noto Sans KR 400 그대로 씀 */
-   (SUITE v2.0.4, SIL OFL 1.1 – fonts/SUITE-LICENSE.txt) */
 @font-face {
   font-family: "SUITE";
   src: url("../fonts/SUITE-Regular.woff2") format("woff2");
@@ -343,6 +343,55 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 .map-address { font-size: 13px; color: #555; }
 
+/* ===== 메뉴 페이지 (흰 배경, 다운로드 버튼 y176, 타일 y241–951) ===== */
+.menu-page { padding: 15px 0 20px; }
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 20px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  color: #000;
+  background: #fff;
+  border-radius: 9px;
+}
+.download-button svg { flex: none; }
+
+/* 카테고리 타일: 사진 위 반투명 검정 막 + 흰 글씨, 마우스 올리면 막이 사라짐 */
+.category-grid {
+  margin-top: 35px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.category-grid a {
+  position: relative;
+  display: block;
+  aspect-ratio: 305 / 230;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+.category-grid img { width: 100%; height: 100%; object-fit: cover; }
+.category-grid span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 32px;
+  color: #fff;
+  background: rgba(0, 0, 0, .5);
+  transition: opacity .3s;
+}
+.category-grid a:hover span,
+.category-grid a:focus-visible span { opacity: 0; }
+
 /* ===== 푸터 (흰 배경, 12px #404040 가운데 정렬) ===== */
 .site-footer {
   padding: 35px 0 40px;
@@ -428,4 +477,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .info-location { margin-top: 15px; }   /* y1812 */
   .info-location .body-text { margin-top: 22px; }
   .map { margin-top: 36px; }             /* y1959 */
+
+  .menu-page { padding: 8px 0 10px; }    /* 다운로드 버튼 y103 */
+  .category-grid { margin-top: 17px; grid-template-columns: repeat(2, 1fr); gap: 5px; }   /* 타일 y150 */
+  .category-grid a { aspect-ratio: 177.5 / 135; }
 }
