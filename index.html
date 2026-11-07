@@ -3,10 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>명품반찬</title>
+  <title>명품반찬 | 가족의 행복 더하기</title>
+  <meta name="description" content="매일 아침 정성으로 만드는 집밥 반찬, 명품반찬입니다.">
+
+  <!-- 파비콘 -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+  <!-- 공유 미리보기 (카카오톡·페이스북 등). og:image 는 절대 URL 이어야 합니다. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="명품반찬">
+  <meta property="og:title" content="명품반찬 | 가족의 행복 더하기">
+  <meta property="og:description" content="매일 아침 정성으로 만드는 집밥 반찬, 명품반찬입니다.">
+  <meta property="og:url" content="https://johnny-park84.github.io/myungpum-banchan/">
+  <meta property="og:image" content="https://johnny-park84.github.io/myungpum-banchan/images/og-image.png">
+  <meta property="og:image:width" content="300">
+  <meta property="og:image:height" content="90">
+  <meta property="og:image:alt" content="명품반찬 로고">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/SUITE-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>명품반찬</h1>
-  <p>가족의 행복 더하기</p>
+  <!-- 헤더 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="명품반찬 홈">
+        <img src="images/logo-header.png" alt="명품반찬" class="logo-img" width="300" height="90">
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav">
+        <ul>
+          <li><a href="#about">소개</a></li>
+          <li><a href="#menu">메뉴</a></li>
+          <li><a href="#bulk">대량 주문</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 히어로 -->
+    <section class="hero">
+      <div class="container hero-content">
+        <img src="images/hero.png" alt="" class="hero-logo" width="300" height="90">
+        <p class="hero-eyebrow">매일 아침 직접 만드는 집밥 반찬</p>
+        <h1>가족의 행복 더하기,<br>명품반찬</h1>
+        <p class="hero-sub">좋은 재료와 정직한 손맛으로<br class="br-mobile"> 우리 가족 식탁을 채웁니다.</p>
+        <div class="hero-actions">
+          <a href="tel:000-0000-0000" class="btn btn-primary">전화 주문하기</a>
+          <a href="#menu" class="btn btn-outline">메뉴 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 소개 섹션 1: 가게 소개 -->
+    <section id="about" class="section">
+      <div class="container split">
+        <div class="split-media img-frame" data-label="images/intro-1.jpg">
+          <img src="images/intro-1.jpg" alt="초록 차양이 있는 명품반찬 매장 외관" width="750" height="422">
+        </div>
+        <div class="split-text">
+          <p class="section-eyebrow">소개</p>
+          <h2>엄마의 마음으로<br>매일 새로 만듭니다</h2>
+          <p>명품반찬은 그날 만든 반찬만 판매합니다. 화학조미료를 줄이고, 국산 재료를 중심으로 집에서 먹는 그 맛 그대로 담았습니다.</p>
+          <ul class="check-list">
+            <li>당일 조리 · 당일 판매</li>
+            <li>국산 농산물 위주의 재료</li>
+            <li>깔끔한 위생 관리</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 소개 섹션 2: 메뉴 -->
+    <section id="menu" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">메뉴</p>
+          <h2>오늘의 반찬</h2>
+          <p>계절과 장보기에 따라 메뉴가 조금씩 달라집니다.</p>
+        </div>
+        <div class="menu-banner img-frame" data-label="images/intro-2.jpg">
+          <img src="images/intro-2.jpg" alt="진열대에 가지런히 담긴 여러 가지 반찬" width="750" height="422">
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-body">
+              <h3>나물·무침</h3>
+              <p>시금치, 콩나물, 고사리 등 제철 나물을 고소하게 무쳤습니다.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <h3>조림·볶음</h3>
+              <p>장조림, 멸치볶음, 어묵볶음 등 도시락 단골 반찬.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <h3>김치·국·찌개</h3>
+              <p>직접 담근 김치와 데우기만 하면 되는 국·찌개.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 소개 섹션 3: 대량 주문 -->
+    <section id="bulk" class="section">
+      <div class="container split split-reverse">
+        <div class="split-media img-frame" data-label="images/intro-3.jpg">
+          <img src="images/intro-3.jpg" alt="신선한 채소를 손질하는 모습" width="1280" height="720">
+        </div>
+        <div class="split-text">
+          <p class="section-eyebrow">대량 주문</p>
+          <h2>행사·단체 주문도<br>정성 그대로</h2>
+          <p>돌잔치, 제사, 회사 행사, 어린이집·경로당 등 단체 반찬 주문을 받습니다. 인원과 예산에 맞춰 구성해 드려요.</p>
+          <ul class="check-list">
+            <li>최소 3일 전 예약</li>
+            <li>인원·예산 맞춤 구성</li>
+            <li>근거리 배달 가능 (문의)</li>
+          </ul>
+          <a href="tel:000-0000-0000" class="btn btn-primary">대량 주문 문의</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 영업시간 · 연락처 -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">영업 안내</p>
+          <h2>영업시간 · 연락처</h2>
+        </div>
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>영업시간</h3>
+            <dl class="hours">
+              <div><dt>평일</dt><dd>09:00 – 20:00</dd></div>
+              <div><dt>토요일</dt><dd>09:00 – 18:00</dd></div>
+              <div><dt>일요일</dt><dd>휴무</dd></div>
+            </dl>
+            <p class="note">공휴일 영업은 매장에 문의해 주세요.</p>
+          </div>
+          <div class="info-card info-card-call">
+            <h3>전화 주문 · 문의</h3>
+            <p class="phone-number">000-0000-0000</p>
+            <a href="tel:000-0000-0000" class="btn btn-primary btn-block btn-call">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+              전화 걸기
+            </a>
+            <p class="note">전화로 미리 주문하시면 포장해 두겠습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 오시는 길 -->
+    <section id="location" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">오시는 길</p>
+          <h2>찾아오시는 길</h2>
+        </div>
+        <div class="location">
+          <div class="map img-frame" data-label="images/map.jpg (약도 또는 지도 캡처)">
+            <img src="images/map.jpg" alt="명품반찬 위치 약도">
+          </div>
+          <div class="location-text">
+            <h3>주소</h3>
+            <p class="address">[주소를 입력하세요] 00시 00구 00로 00, 1층</p>
+            <h3>찾아오는 방법</h3>
+            <ul class="plain-list">
+              <li>버스: [정류장명] 정류장 하차 후 도보 3분</li>
+              <li>지하철: [역명] 0번 출구 도보 5분</li>
+              <li>주차: 매장 앞 잠시 정차 가능</li>
+            </ul>
+            <div class="map-links">
+              <a class="btn btn-outline" href="https://map.naver.com/p/search/%EB%AA%85%ED%92%88%EB%B0%98%EC%B0%AC" target="_blank" rel="noopener">네이버 지도</a>
+              <a class="btn btn-outline" href="https://map.kakao.com/?q=%EB%AA%85%ED%92%88%EB%B0%98%EC%B0%AC" target="_blank" rel="noopener">카카오맵</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-logo">명품반찬</p>
+      <dl class="biz-info">
+        <div><dt>상호</dt><dd>명품반찬</dd></div>
+        <div><dt>대표자</dt><dd>[대표자명]</dd></div>
+        <div><dt>사업자등록번호</dt><dd>000-00-00000</dd></div>
+        <div><dt>주소</dt><dd>[주소를 입력하세요]</dd></div>
+        <div><dt>전화</dt><dd><a href="tel:000-0000-0000">000-0000-0000</a></dd></div>
+      </dl>
+      <p class="copyright">&copy; <span id="year">2026</span> 명품반찬. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 모바일 하단 고정 전화 버튼 -->
+  <a href="tel:000-0000-0000" class="floating-call" aria-label="전화 걸기">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+    전화 주문
+  </a>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
