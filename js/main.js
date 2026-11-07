@@ -34,20 +34,26 @@ slideMenu.querySelectorAll('.sub-toggle').forEach((btn) => {
   });
 });
 
-// 네이버 지도: #map 의 data-ncp-key-id(네이버 클라우드 Maps Client ID)와 좌표로 지도를 띄움.
-// 인증 실패(등록되지 않은 도메인 등)나 로드 실패 시에는 '네이버 지도에서 보기' 링크가 그대로 보입니다.
+// 네이버 지도 (NAVER Maps API v3, https://navermaps.github.io/maps.js.ncp/docs/tutorial-2-Getting-Started.html)
+// index.html 맨 아래의 maps.js?ncpKeyId=…&callback=initNaverMap 스크립트가 준비되면 initNaverMap 에서 지도를 그림.
+// 인증 실패(등록되지 않은 서비스 URL 등) 시 navermap_authFailure 가 불려 '네이버 지도에서 보기' 링크로 되돌림.
 // 설정은 기존 사이트와 동일: 확대/축소 컨트롤, 축척 표시, 마우스 휠 확대, 지도 유형 버튼 없음.
 const mapEl = document.getElementById('map');
-if (mapEl && mapEl.dataset.ncpKeyId && mapEl.dataset.lat && mapEl.dataset.lng) {
+if (mapEl && mapEl.dataset.lat && mapEl.dataset.lng) {
   const fallback = mapEl.innerHTML;
-  window.navermap_authFailure = () => { mapEl.innerHTML = fallback; };
-  const script = document.createElement('script');
-  script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(mapEl.dataset.ncpKeyId)}`;
-  script.onload = () => {
-    const pos = new naver.maps.LatLng(+mapEl.dataset.lat, +mapEl.dataset.lng);
+
+  window.navermap_authFailure = () => {
+    mapEl.innerHTML = fallback;
+  };
+
+  // maps.js(3.10.5)는 callback 을 naver.maps 를 만들기 직전에 부르므로, 스크립트 실행이 끝난 뒤 그리도록 한 박자 미룸
+  window.initNaverMap = () => setTimeout(drawNaverMap);
+
+  function drawNaverMap() {
+    const position = new naver.maps.LatLng(+mapEl.dataset.lat, +mapEl.dataset.lng);
     mapEl.innerHTML = '';
     const map = new naver.maps.Map(mapEl, {
-      center: pos,
+      center: position,
       zoom: +mapEl.dataset.zoom || 17,
       zoomControl: true,
       zoomControlOptions: { style: naver.maps.ZoomControlStyle.LARGE, position: naver.maps.Position.TOP_LEFT },
@@ -55,14 +61,14 @@ if (mapEl && mapEl.dataset.ncpKeyId && mapEl.dataset.lat && mapEl.dataset.lng) {
       scaleControl: true,
       scrollWheel: true,
     });
-    const marker = new naver.maps.Marker({ position: pos, map, title: '명품반찬' });
+    const marker = new naver.maps.Marker({ position, map, title: '명품반찬' });
     const info = new naver.maps.InfoWindow({
       content: '<div style="padding:5px 15px"><p style="margin:0;font-size:15px;font-weight:bold">명품반찬</p></div>',
     });
     info.open(map, marker);
-    marker.addListener('click', () => info.open(map, marker));
-  };
-  document.head.appendChild(script);
+    naver.maps.Event.addListener(marker, 'click', () => info.open(map, marker));
+  }
+
 }
 
 // 카테고리 사진 크게 보기: 사진을 누르면 검정 배경 위에 큰 사진·이름·순번이 뜸.

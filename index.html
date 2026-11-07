@@ -158,7 +158,7 @@
 
     <!-- 지도: 네이버 지도(Client ID 는 공개용 값). 불러오지 못하면 아래 링크가 보입니다. -->
     <div class="container">
-      <div class="map" id="map" data-lat="37.5507114" data-lng="127.1468294" data-zoom="17" data-ncp-key-id="533i039fjg">
+      <div class="map" id="map" data-lat="37.5507114" data-lng="127.1468294" data-zoom="17">
         <a class="map-fallback" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%8F%99%EA%B5%AC%20%EA%B5%AC%EC%B2%9C%EB%A9%B4%EB%A1%9C%20429-11" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 32" width="24" height="32" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.4 12 32 12 32s12-11.6 12-20.3C24 5.2 18.6 0 12 0z" fill="#e8463a"/><circle cx="12" cy="11.5" r="4.5" fill="#fff"/></svg>
           <span class="map-label">명품반찬</span>
@@ -185,5 +185,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <!-- 네이버 지도 API (Client ID: 네이버 클라우드 Maps Application). 준비되면 main.js 의 initNaverMap 호출 -->
+  <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=533i039fjg&amp;callback=initNaverMap" async></script>
 </body>
 </html>
