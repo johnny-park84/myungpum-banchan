@@ -24,14 +24,17 @@
 :root {
   --font-sans: "Montserrat", "Noto Sans KR", sans-serif;
   --font-menu: "Montserrat", "SUITE", sans-serif;
-  --text: #212121;
-  --section-bg: #fafbf8;
-  --line: #e7e7e7;
-  --orange: #ff5700;
-  --green: #00bf2b;
-  --blue: #0073ff;
-  --red: #ff0000;
-  --footer-text: #404040;
+  /* 색: 로고의 짙은 갈색·붉은 도장, 메뉴판과 같은 따뜻한 톤 */
+  --text: #3a2e25;
+  --text-soft: #7a6b5d;
+  --bg: #fffdf9;
+  --section-bg: #f8f3ea;
+  --line: #e8dfd2;
+  --orange: #d9622b;
+  --green: #5c7a3d;
+  --blue: #2f5f7a;
+  --red: #c0392b;
+  --footer-text: #7a6b5d;
   --header-h: 161px;
 }
 
@@ -50,7 +53,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--text);
-  background: #fff;
+  background: var(--bg);
   word-break: keep-all;
   -webkit-font-smoothing: antialiased;
 }
@@ -80,7 +83,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #fff;
+  background: var(--bg);
 }
 .header-top {
   position: relative;
@@ -111,7 +114,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   line-height: 50px;
   transition: color .2s;
 }
-.header-nav > ul > li > a:hover { color: rgba(33, 33, 33, .5); }
+.header-nav > ul > li > a:hover { color: var(--text-soft); }
 .header-nav > ul > li.is-current > a { font-weight: 700; }
 .header-nav > ul > li.is-current > a::before {
   content: "";
@@ -120,7 +123,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   right: 0;
   bottom: -1px;
   height: 2px;
-  background: rgba(33, 33, 33, .89);
+  background: var(--text);
 }
 
 /* '메뉴' 하위 메뉴 (마우스 올리면 펼침) */
@@ -131,7 +134,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   width: 160px;
   list-style: none;
   padding: 0;
-  background: #212121;
+  background: var(--text);
   opacity: 0;
   visibility: hidden;
   transition: opacity .3s, visibility .3s;
@@ -169,7 +172,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   left: 0;
   width: 300px;
   overflow-y: auto;
-  background: #fff;
+  background: var(--bg);
   transform: translateX(-100%);
   transition: transform .3s;
 }
@@ -190,16 +193,16 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .slide-menu.is-open .slide-menu-close { opacity: 1; }
 
 .slide-menu-panel ul { list-style: none; padding: 0; }
-.slide-menu-panel > ul > li { position: relative; border-top: 1px solid #f3f3f3; }
-.slide-menu-panel > ul > li:last-child { border-bottom: 1px solid #f3f3f3; }
+.slide-menu-panel > ul > li { position: relative; border-top: 1px solid var(--line); }
+.slide-menu-panel > ul > li:last-child { border-bottom: 1px solid var(--line); }
 .slide-menu-panel > ul > li > a {
   display: block;
   padding: 13px 50px 14px 20px;
   font-size: 20px;
   line-height: 20px;
-  color: rgba(33, 33, 33, .89);
+  color: var(--text);
 }
-.slide-menu-panel > ul > li.is-current > a { color: #111; background: #f5f5f5; }
+.slide-menu-panel > ul > li.is-current > a { color: var(--text); background: var(--section-bg); }
 .sub-toggle {
   position: absolute;
   top: 0;
@@ -209,7 +212,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #333;
+  color: var(--text);
 }
 .sub-toggle svg { width: 18px; height: 9px; transition: transform .2s; }
 .sub-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
@@ -220,10 +223,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   padding: 6px 20px 6px 30px;
   font-size: 19px;
   line-height: 23px;
-  color: rgba(33, 33, 33, .89);
+  color: var(--text);
 }
 
-/* ===== 홈 본문 (배경 #fafbf8, y161–1908) ===== */
+/* ===== 홈 본문 (배경 --section-bg, y161–1908) ===== */
 .home {
   padding: 45px 0;                       /* 로고 y206, 지도 끝 +45 = 1908 */
   background: var(--section-bg);
@@ -304,7 +307,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .app-icon img { display: block; border-radius: inherit; }
 /* 전화: 번호 오른쪽에 붙는 작은 동그란 아이콘 */
 .app-icon--phone svg { width: 26px; height: 26px; }
-.app-icon--phone { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; margin-left: 16px; vertical-align: middle; color: var(--orange); background: #fff; }
+.app-icon--phone { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; margin-left: 16px; vertical-align: middle; color: var(--orange); background: var(--bg); }
 .app-icon:hover,
 .app-icon:focus-visible { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 6px 14px rgba(0, 0, 0, .14); }
 .info-delivery + .info-contact { margin-top: 80px; }
@@ -322,7 +325,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background:
     linear-gradient(90deg, rgba(0, 0, 0, .035) 1px, transparent 1px) 0 0 / 40px 40px,
     linear-gradient(rgba(0, 0, 0, .035) 1px, transparent 1px) 0 0 / 40px 40px,
-    #eef0ea;
+    #efe8dc;
 }
 .map-fallback {
   position: absolute;
@@ -337,10 +340,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   padding: 4px 12px;
   font-size: 15px;
   font-weight: 700;
-  background: #fff;
-  border: 1px solid #333;
+  background: var(--bg);
+  border: 1px solid var(--text);
 }
-.map-address { font-size: 13px; color: #555; }
+.map-address { font-size: 13px; color: var(--text-soft); }
 
 /* 지도 핀 위 이름표: 둥근 흰 알약 + 그림자 + 아래 작은 꼬리 */
 .map-tag {
@@ -350,8 +353,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   font-weight: 700;
   line-height: 22px;
   white-space: nowrap;
-  color: #212121;
-  background: #fff;
+  color: var(--text);
+  background: var(--bg);
   border-radius: 999px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, .18);
 }
@@ -362,7 +365,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   bottom: -5px;
   width: 10px;
   height: 10px;
-  background: #fff;
+  background: var(--bg);
   transform: translateX(-50%) rotate(45deg);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, .08);
 }
@@ -378,8 +381,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   font-size: 12px;
   line-height: 18px;
   letter-spacing: 1px;
-  color: #000;
-  background: #fff;
+  color: var(--text);
+  background: var(--bg);
   border-radius: 9px;
 }
 .download-button svg { flex: none; }
@@ -400,7 +403,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   display: block;
   aspect-ratio: 305 / 230;
   overflow: hidden;
-  border: 1px solid #eee;
+  border: 1px solid var(--line);
 }
 .category-grid img { width: 100%; height: 100%; object-fit: cover; }
 .category-grid span {
@@ -433,8 +436,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .gallery a {
   display: block;
   overflow: hidden;
-  background: #fff;
-  border: 1px solid #eee;
+  background: var(--bg);
+  border: 1px solid var(--line);
 }
 .gallery img { width: 100%; height: auto; aspect-ratio: 303 / 228; object-fit: cover; }
 .gallery span { display: block; padding: 10px; font-size: 14px; line-height: 22.4px; }
@@ -543,10 +546,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   pointer-events: none;
 }
 
-/* ===== 푸터 (흰 배경, 12px #404040 가운데 정렬) ===== */
+/* ===== 푸터 (--bg 배경, 12px 가운데 정렬) ===== */
 .site-footer {
   padding: 35px 0 40px;
-  background: #fff;
+  background: var(--bg);
   color: var(--footer-text);
   font-size: 12px;
   line-height: 19.2px;
