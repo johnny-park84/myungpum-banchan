@@ -35,7 +35,7 @@ slideMenu.querySelectorAll('.sub-toggle').forEach((btn) => {
 });
 
 // 네이버 지도 (NAVER Maps API v3, https://navermaps.github.io/maps.js.ncp/docs/tutorial-2-Getting-Started.html)
-// index.html 맨 아래의 maps.js?ncpClientId=…&callback=initNaverMap 스크립트가 준비되면 initNaverMap 에서 지도를 그림.
+// index.html 맨 아래의 maps.js?ncpKeyId=…&callback=initNaverMap 스크립트가 준비되면 initNaverMap 에서 지도를 그림.
 // 인증 실패(등록되지 않은 서비스 URL 등) 시 navermap_authFailure 가 불려 '네이버 지도에서 보기' 링크로 되돌림.
 // 설정은 기존 사이트와 동일: 확대/축소 컨트롤, 축척 표시, 마우스 휠 확대, 지도 유형 버튼 없음.
 const mapEl = document.getElementById('map');
