@@ -263,10 +263,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .feature-text {
   margin-top: 15px;
   font-size: 22px;
-  line-height: 27px;
+  line-height: 29px;
 }
-.feature-1 .feature-text { margin-top: 35px; line-height: 29px; }   /* 원본: 제목 아래 빈 줄 하나 더 */
-.feature-3 .feature-text { line-height: 29px; }
 
 /* 가운데 짧은 구분선 (y1062, y1371) */
 .divider {
@@ -613,9 +611,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
   .features { margin-top: 56px; grid-template-columns: 1fr; gap: 42px; }   /* 사진 y424 */
   .feature .title { margin-top: 15px; }
-  .feature-text { margin-top: 10px; }
-  .feature-1 .feature-text { margin-top: 31px; line-height: 26px; }
-  .feature-3 .feature-text { margin-top: 9px; line-height: 26px; }
+  .feature-text { margin-top: 10px; line-height: 26px; }
   .feature-3 img { height: 223px; aspect-ratio: auto; }   /* 원본은 세 번째 사진만 223px 높이 */
 
   .divider { margin-top: 42px; }         /* y1494 */
