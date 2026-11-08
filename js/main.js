@@ -66,7 +66,15 @@ if (mapEl && mapEl.dataset.lat && mapEl.dataset.lng) {
       scaleControl: true,
       scrollWheel: true,
     });
-    const marker = new naver.maps.Marker({ position, map, title: '명품반찬' });
+    // 기본 파란 핀 대신 빨간 핀 (지도 대체 링크의 핀과 같은 모양), 핀 끝(아래 가운데)이 가게 위치
+    const marker = new naver.maps.Marker({
+      position, map, title: '명품반찬',
+      icon: {
+        content: '<svg viewBox="0 0 24 32" width="30" height="40" style="display:block" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.4 12 32 12 32s12-11.6 12-20.3C24 5.2 18.6 0 12 0z" fill="#e8463a"/><circle cx="12" cy="11.5" r="4.5" fill="#fff"/></svg>',
+        size: new naver.maps.Size(30, 40),
+        anchor: new naver.maps.Point(15, 40),
+      },
+    });
     const info = new naver.maps.InfoWindow({
       content: '<div style="padding:5px 15px;text-align:center;white-space:nowrap"><p style="margin:0;font-size:15px;font-weight:bold">명품반찬</p></div>',
     });
