@@ -300,7 +300,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .app-icon--phone { border-radius: 50%; }
 .app-icon img { display: block; border-radius: inherit; }
 /* 전화: 번호 오른쪽에 붙는 작은 동그란 아이콘 */
-.app-icon--phone { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: 16px; vertical-align: middle; color: var(--orange); background: #fff; }
+.app-icon--phone svg { width: 26px; height: 26px; }
+.app-icon--phone { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; margin-left: 16px; vertical-align: middle; color: var(--orange); background: #fff; }
 .app-icon:hover,
 .app-icon:focus-visible { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 6px 14px rgba(0, 0, 0, .14); }
 .info-delivery + .info-contact { margin-top: 80px; }
@@ -446,7 +447,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   margin-top: 30px;
 }
 .bulk-call-title { font-size: 22px; font-weight: 700; line-height: 26.8px; white-space: nowrap; }
-.bulk-call-phone { font-size: 22px; line-height: 26.8px; margin-top: -9px; }   /* 아이콘(44px)을 제목 줄 가운데에 맞춤 */
+.bulk-call-phone { font-size: 22px; line-height: 26.8px; margin-top: -13px; }   /* 아이콘(52px)을 제목 줄 가운데에 맞춤 */
 .bulk-call + .divider { margin-top: 30px; }
 
 /* 사진 크게 보기: 검정 90% 배경, 위쪽 순번·버튼, 양옆 화살표, 아래 이름 */
@@ -603,7 +604,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .info-delivery + .info-contact { margin-top: 60px; }
   .app-icons { gap: 28px; margin-top: 20px; padding-left: 40px; }
   .app-icon img { width: 56px; height: 56px; }
-  .app-icon--phone { width: 40px; height: 40px; margin-left: 12px; }
+  .app-icon--phone { width: 46px; height: 46px; margin-left: 12px; }
   .info-contact { margin-top: 47px; }
   .info-contact .dot-list { margin-top: 3px; }
 
