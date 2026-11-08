@@ -309,6 +309,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   border-radius: 9px;
 }
 .call-button svg { flex: none; }
+.contact-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+/* 보조 버튼: 흰 바탕 + 주황 테두리·글자 (전화 하기가 주 버튼) */
+.call-button--outline { color: var(--orange); background: #fff; border-color: var(--orange); }
 
 /* 오시는 길 (제목 y1402, 설명 y1458) */
 .info-location { margin-top: 30px; }
@@ -359,6 +362,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   border-radius: 9px;
 }
 .download-button svg { flex: none; }
+.menu-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* 카테고리 타일: 사진 위 반투명 검정 막 + 흰 글씨, 마우스 올리면 막이 사라짐 */
 .category-grid {
