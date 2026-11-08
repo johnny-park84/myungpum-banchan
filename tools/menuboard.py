@@ -37,29 +37,29 @@ page = f'''<!doctype html>
 /* 색: 로고의 짙은 갈색·붉은 도장에 맞춘 따뜻한 톤 */
 :root {{ --bg: #fbf7f0; --ink: #3a2e25; --muted: #8a7b6d; --accent: #e8622a; --line: #e4d9ca; --card: #fffdf9; }}
 html, body {{ width: 1240px; height: 1754px; background: var(--bg); }}
-body {{ font-family: SUITE, sans-serif; color: var(--ink); padding: 0 60px; position: relative; }}
+body {{ font-family: SUITE, sans-serif; color: var(--ink); padding: 0 48px; position: relative; }}
 .bar {{ position: absolute; left: 0; right: 0; top: 0; height: 14px; background: var(--accent); }}
 header {{ padding-top: 58px; text-align: center; }}
 header img {{ width: 300px; height: 90px; }}
 .sub {{ margin-top: 18px; font-size: 30px; font-weight: 800; letter-spacing: 2px; }}
 .sub::after {{ content: ""; display: block; width: 50px; height: 2px; margin: 16px auto 0; background: var(--accent); }}
-.contact {{ position: absolute; right: 60px; top: 150px; font-size: 26px; text-align: right; }}
+.contact {{ position: absolute; right: 48px; top: 150px; font-size: 26px; text-align: right; }}
 .contact b {{ font-weight: 800; }}
-main {{ margin-top: 36px; height: 1130px; column-count: 4; column-gap: 36px; column-fill: balance; }}
-.cat {{ margin-bottom: 26px; }}
+main {{ margin-top: 30px; height: 1190px; column-count: 4; column-gap: 32px; column-fill: balance; }}
+.cat {{ margin-bottom: 22px; }}
 .cat h2 {{ break-after: avoid; }}
 .cat li {{ break-inside: avoid; }}
-.cat h2 {{ font-size: 24px; font-weight: 800; color: #fff; background: var(--accent); border-radius: 6px; padding: 6px 12px; margin-bottom: 6px; }}
-.cat li {{ list-style: none; display: flex; justify-content: space-between; gap: 8px; font-size: 20px; line-height: 32px; border-bottom: 1px dotted var(--line); }}
+.cat h2 {{ font-size: 26px; font-weight: 800; color: #fff; background: var(--accent); border-radius: 6px; padding: 6px 12px; margin-bottom: 6px; }}
+.cat li {{ list-style: none; display: flex; justify-content: space-between; gap: 8px; font-size: 22px; line-height: 34px; border-bottom: 1px dotted var(--line); }}
 .cat .n {{ white-space: nowrap; }}
 .cat .n small {{ font-size: .8em; color: var(--muted); }}
 .cat .p {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
 .note {{ font-size: 15px; color: #777; text-align: right; margin-top: -8px; }}
-.reserve {{ position: absolute; left: 60px; right: 60px; bottom: 150px; border: 2px solid var(--accent); border-radius: 12px; overflow: hidden; text-align: center; background: var(--card); }}
+.reserve {{ position: absolute; left: 48px; right: 48px; bottom: 128px; border: 2px solid var(--accent); border-radius: 12px; overflow: hidden; text-align: center; background: var(--card); }}
 .reserve h3 {{ background: var(--accent); color: #fff; font-size: 26px; font-weight: 800; letter-spacing: 8px; padding: 10px 0; }}
 .reserve p {{ font-size: 24px; padding: 22px 0 6px; }}
 .reserve p + p {{ padding: 0 0 22px; font-size: 26px; font-weight: 800; }}
-.account {{ position: absolute; left: 0; right: 0; bottom: 58px; text-align: center; font-size: 34px; font-weight: 800; }}
+.account {{ position: absolute; left: 0; right: 0; bottom: 50px; text-align: center; font-size: 34px; font-weight: 800; }}
 </style></head>
 <body>
 <div class="bar"></div>
