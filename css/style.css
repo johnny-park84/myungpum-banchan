@@ -273,7 +273,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, .04);
 }
-.info-contact + .divider { margin-top: 36px; }
+.info-contact + .divider { margin-top: 56px; }
 
 /* 영업 시간 (제목 y1093, 목록 y1149) */
 .info-hours { margin-top: 30px; }
@@ -286,14 +286,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .dot-list span { font-size: 22px; }
 
 /* 연락처 (y1264) — 왼쪽 1/4 칸 + 버튼 */
-.info-contact {
-  margin-top: 59px;
-  display: grid;
-  grid-template-columns: calc(25% - 22.5px) 1fr;
-  gap: 30px;
-  align-items: start;
-}
-.info-contact .dot-list { margin-top: 0; line-height: 31.2px; }
+.info-contact { margin-top: 59px; }
+.info-contact .dot-list { line-height: 31.2px; }
 .info-contact .dot-list .phone { font-size: 26px; }
 
 .call-button {
@@ -312,16 +306,18 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* 보조 버튼: 흰 바탕 + 주황 테두리·글자 (전화 하기가 주 버튼) */
 .call-button--outline { color: var(--orange); background: #fff; border-color: var(--orange); }
 
-/* 배달 주문 (영업 시간 아래): 플랫폼 앱 아이콘 자체가 링크 */
+/* 배달 주문·연락처: 아이콘 자체가 링크 (배달 앱 아이콘, 전화) */
 .info-delivery { margin-top: 90px; }
 .info-delivery .dot-list { word-break: keep-all; }   /* 모바일에서 낱말 중간이 아니라 띄어쓰기에서 줄바꿈 */
-.delivery-icons { display: flex; flex-wrap: wrap; gap: 36px; margin-top: 24px; padding-left: 40px; }
-.delivery-icon { display: block; border-radius: 22%; box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 2px 6px rgba(0, 0, 0, .08); transition: transform .2s, box-shadow .2s; }
-.delivery-icon--baemin { border-radius: 50%; }
+.app-icons { display: flex; flex-wrap: wrap; gap: 36px; margin-top: 24px; padding-left: 40px; }
+.app-icon { display: block; border-radius: 22%; box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 2px 6px rgba(0, 0, 0, .08); transition: transform .2s, box-shadow .2s; }
+.app-icon--baemin,
+.app-icon--phone { border-radius: 50%; }
+.app-icon img { display: block; border-radius: inherit; }
+.app-icon--phone { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; color: var(--orange); background: #fff; }
+.app-icon:hover,
+.app-icon:focus-visible { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 6px 14px rgba(0, 0, 0, .14); }
 .info-delivery + .info-contact { margin-top: 80px; }
-.delivery-icon img { display: block; border-radius: inherit; }
-.delivery-icon:hover,
-.delivery-icon:focus-visible { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 6px 14px rgba(0, 0, 0, .14); }
 
 /* 오시는 길 (제목 y1402, 설명 y1458) */
 .info-location { margin-top: 30px; }
@@ -612,18 +608,18 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .feature-3 img { height: 223px; aspect-ratio: auto; }   /* 원본은 세 번째 사진만 223px 높이 */
 
   .divider { margin-top: 42px; }         /* y1494 */
-  .info-contact + .divider { margin-top: 15px; }
+  .info-contact + .divider { margin-top: 40px; }
 
   .info-hours { margin-top: 15px; }      /* y1510 */
   .dot-list { margin-top: 23px; }        /* y1557 */
 
   .info-delivery { margin-top: 70px; }
   .info-delivery + .info-contact { margin-top: 60px; }
-  .delivery-icons { gap: 28px; margin-top: 20px; padding-left: 40px; }
-  .delivery-icon img { width: 56px; height: 56px; }
-  .info-contact { display: block; margin-top: 47px; }   /* y1646 */
+  .app-icons { gap: 28px; margin-top: 20px; padding-left: 40px; }
+  .app-icon img,
+  .app-icon--phone { width: 56px; height: 56px; }
+  .info-contact { margin-top: 47px; }
   .info-contact .dot-list { margin-top: 3px; }
-  .info-contact > div + div { margin-top: 25px; }        /* 버튼 y1720 */
 
   .info-location { margin-top: 15px; }   /* y1812 */
   .info-location .body-text { margin-top: 22px; }
