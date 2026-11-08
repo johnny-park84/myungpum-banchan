@@ -9,12 +9,13 @@
 import html, os, re, sys
 
 ROOT, OUT = sys.argv[1], sys.argv[2]
+NAMES = {'가지나물 (반찬)': '가지나물'}  # 메뉴판에서만 바꿔 쓰는 이름
 LABELS = {'국/찌개': '국 · 찌개', '강정/생선': '강정 · 생선', '조림/젓갈': '조림 · 젓갈', '밥/샐러드/기타': '밥 · 샐러드 · 기타'}
 
 groups = {}
 for line in open(os.path.join(ROOT, 'reference/baemin/menus.tsv'), encoding='utf-8'):
     group, name, price, _ = line.rstrip('\n').split('\t')
-    groups.setdefault(group, []).append((name, int(price)))
+    groups.setdefault(group, []).append((NAMES.get(name, name), int(price)))
 
 def menu_name(name):
     # '(Meal Kit)' 같은 괄호 부분은 작게 써서 한 줄에 들어가게 함
@@ -57,8 +58,8 @@ main {{ margin-top: 30px; height: 1190px; column-count: 4; column-gap: 32px; col
 .note {{ font-size: 15px; color: #777; text-align: right; margin-top: -8px; }}
 .reserve {{ position: absolute; left: 48px; right: 48px; bottom: 128px; border: 2px solid var(--accent); border-radius: 12px; overflow: hidden; text-align: center; background: var(--card); }}
 .reserve h3 {{ background: var(--accent); color: #fff; font-size: 26px; font-weight: 800; letter-spacing: 8px; padding: 10px 0; }}
-.reserve p {{ font-size: 24px; padding: 22px 0 6px; }}
-.reserve p + p {{ padding: 0 0 22px; font-size: 26px; font-weight: 800; }}
+.reserve p {{ font-size: 36px; font-weight: 800; padding: 22px 0 8px; }}
+.reserve p + p {{ padding: 0 0 22px; font-size: 28px; }}
 .account {{ position: absolute; left: 0; right: 0; bottom: 50px; text-align: center; font-size: 34px; font-weight: 800; }}
 </style></head>
 <body>
