@@ -443,12 +443,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 .bulk-call {
   display: grid;
-  grid-template-columns: 158.3px 1fr;
+  grid-template-columns: max-content 1fr;
   gap: 50px;
   align-items: start;
   margin-top: 30px;
 }
-.bulk-call-title { font-size: 22px; font-weight: 700; line-height: 26.8px; }
+.bulk-call-title { font-size: 22px; font-weight: 700; line-height: 26.8px; white-space: nowrap; }
 .bulk-call .call-button { padding: 8px 20px; }
 .bulk-call + .divider { margin-top: 30px; }
 
