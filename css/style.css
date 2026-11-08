@@ -288,10 +288,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* 연락처 */
 .info-contact { margin-top: 59px; }
 
-/* 전화번호 목록 (홈 연락처, 대량 주문): '가게/휴대폰' 이름 + 번호 + 전화 아이콘 */
+/* 전화번호 목록 (홈 연락처, 대량 주문): 번호 + 전화 아이콘 */
 .phone-list { line-height: 31.2px; }
 .phone-list li + li { margin-top: 14px; }
-.phone-list .phone-label { display: inline-block; min-width: 4.2em; font-size: 18px; color: #777; }
 .phone-list .phone { display: inline-block; min-width: 7.3em; font-size: 26px; }   /* 번호 길이가 달라도 아이콘이 세로로 정렬되게 */
 
 
@@ -573,7 +572,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .dot-list { line-height: 22px; }
   .dot-list span { font-size: 16px; }
   .phone-list { line-height: 21.6px; }
-  .phone-list .phone-label { font-size: 14px; }
   .phone-list .phone { font-size: 18px; }
 }
 
