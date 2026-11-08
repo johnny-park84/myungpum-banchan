@@ -318,6 +318,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .delivery-icons { display: flex; flex-wrap: wrap; gap: 36px; margin-top: 24px; padding-left: 40px; }
 .delivery-icon { display: block; border-radius: 22%; box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 2px 6px rgba(0, 0, 0, .08); transition: transform .2s, box-shadow .2s; }
 .delivery-icon--baemin { border-radius: 50%; }
+.info-delivery + .info-contact { margin-top: 80px; }
 .delivery-icon img { display: block; border-radius: inherit; }
 .delivery-icon:hover,
 .delivery-icon:focus-visible { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 6px 14px rgba(0, 0, 0, .14); }
@@ -617,6 +618,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .dot-list { margin-top: 23px; }        /* y1557 */
 
   .info-delivery { margin-top: 70px; }
+  .info-delivery + .info-contact { margin-top: 60px; }
   .delivery-icons { gap: 28px; margin-top: 20px; padding-left: 40px; }
   .delivery-icon img { width: 56px; height: 56px; }
   .info-contact { display: block; margin-top: 47px; }   /* y1646 */
