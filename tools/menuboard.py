@@ -56,6 +56,8 @@ main {{ margin-top: 30px; height: 1190px; column-count: 4; column-gap: 32px; col
 .cat .n small {{ font-size: .8em; color: var(--muted); }}
 .cat .p {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
 .note {{ font-size: 15px; color: #777; text-align: right; margin-top: -8px; }}
+.more {{ position: absolute; left: 0; right: 0; bottom: 326px; text-align: center; font-size: 22px; line-height: 32px; }}
+.more b {{ display: block; font-size: 26px; font-weight: 800; color: var(--accent); }}
 .reserve {{ position: absolute; left: 48px; right: 48px; bottom: 128px; border: 2px solid var(--accent); border-radius: 12px; overflow: hidden; text-align: center; background: var(--card); }}
 .reserve h3 {{ background: var(--accent); color: #fff; font-size: 26px; font-weight: 800; letter-spacing: 8px; padding: 10px 0; }}
 .reserve p {{ font-size: 36px; font-weight: 800; padding: 22px 0 8px; }}
@@ -72,6 +74,7 @@ main {{ margin-top: 30px; height: 1190px; column-count: 4; column-gap: 32px; col
 <main>
 {chr(10).join(blocks)}
 </main>
+<p class="more"><b>매일 새로 만드는 130여 가지 반찬</b>매장에는 이 밖에도 그날그날 만든 다양한 반찬이 준비되어 있습니다.</p>
 <div class="reserve">
   <h3>※ 예약 문의</h3>
   <p>제사음식 / 생일음식상 / 이바지음식 / 집들이음식</p>
