@@ -6,7 +6,7 @@
     --screenshot=menu.png file://<출력 html>
   sips -s format jpeg -s formatOptions 85 menu.png --out files/myungpum-menu.jpg
 """
-import html, os, sys
+import html, os, re, sys
 
 ROOT, OUT = sys.argv[1], sys.argv[2]
 LABELS = {'국/찌개': '국 · 찌개', '강정/생선': '강정 · 생선', '조림/젓갈': '조림 · 젓갈', '밥/샐러드/기타': '밥 · 샐러드 · 기타'}
@@ -16,10 +16,14 @@ for line in open(os.path.join(ROOT, 'reference/baemin/menus.tsv'), encoding='utf
     group, name, price, _ = line.rstrip('\n').split('\t')
     groups.setdefault(group, []).append((name, int(price)))
 
+def menu_name(name):
+    # '(Meal Kit)' 같은 괄호 부분은 작게 써서 한 줄에 들어가게 함
+    return re.sub(r'(\(.*?\))', r'<small>\1</small>', html.escape(name))
+
 blocks = []
 for group, items in groups.items():
     rows = '\n'.join(
-        f'<li><span class="n">{html.escape(n)}</span><span class="p">{p:,}</span></li>' for n, p in items)
+        f'<li><span class="n">{menu_name(n)}</span><span class="p">{p:,}</span></li>' for n, p in items)
     blocks.append(f'<section class="cat"><h2>{LABELS.get(group, group)}</h2><ul>{rows}</ul></section>')
 
 fonts = 'file://' + os.path.join(ROOT, 'fonts')
@@ -39,13 +43,14 @@ header img {{ width: 300px; height: 90px; }}
 .sub::after {{ content: ""; display: block; width: 50px; height: 2px; margin: 16px auto 0; background: #212121; }}
 .contact {{ position: absolute; right: 60px; top: 150px; font-size: 26px; text-align: right; }}
 .contact b {{ font-weight: 800; }}
-main {{ margin-top: 40px; height: 1060px; column-count: 4; column-gap: 44px; column-fill: balance; }}
+main {{ margin-top: 36px; height: 1130px; column-count: 4; column-gap: 36px; column-fill: balance; }}
 .cat {{ margin-bottom: 26px; }}
 .cat h2 {{ break-after: avoid; }}
 .cat li {{ break-inside: avoid; }}
-.cat h2 {{ font-size: 22px; font-weight: 800; padding: 6px 0 8px; border-bottom: 2px solid #212121; margin-bottom: 6px; }}
-.cat h2::before {{ content: "| "; }}
-.cat li {{ list-style: none; display: flex; justify-content: space-between; gap: 8px; font-size: 18px; line-height: 30px; border-bottom: 1px dotted #ddd; }}
+.cat h2 {{ font-size: 24px; font-weight: 800; color: #fff; background: #ff5700; border-radius: 6px; padding: 6px 12px; margin-bottom: 6px; }}
+.cat li {{ list-style: none; display: flex; justify-content: space-between; gap: 8px; font-size: 20px; line-height: 32px; border-bottom: 1px dotted #ddd; }}
+.cat .n {{ white-space: nowrap; }}
+.cat .n small {{ font-size: .8em; }}
 .cat .p {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
 .note {{ font-size: 15px; color: #777; text-align: right; margin-top: -8px; }}
 .reserve {{ position: absolute; left: 60px; right: 60px; bottom: 150px; border: 2px solid #ff5700; border-radius: 12px; overflow: hidden; text-align: center; }}
