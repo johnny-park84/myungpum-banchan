@@ -124,8 +124,8 @@ def replace_nav(text):
                   lambda m: m[1] + nav_items(m[4] + '  ') + m[3], text, flags=re.S)
     return text
 
-# ----- 카테고리 페이지 (기존 27.html 을 틀로 사용)
-template = open(os.path.join(ROOT, '27.html'), encoding='utf-8').read()
+# ----- 카테고리 페이지 (기존 soup.html 을 틀로 사용)
+template = open(os.path.join(ROOT, 'soup.html'), encoding='utf-8').read()
 for group, label, cslug in CATS:
     names = ', '.join(m['name'] for m in menus[group])
     desc = html.escape(f'명품반찬 {label}: {names}', quote=True)
@@ -147,9 +147,9 @@ for group, label, cslug in CATS:
     page = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m[1] + desc, page)
     page = re.sub(r'(<meta property="og:title" content=")[^"]*', lambda m: m[1] + f'{label} | 명품반찬', page)
     page = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m[1] + desc, page)
-    page = re.sub(r'(<meta property="og:url" content="[^"]*/)27"', lambda m: m[1] + cslug + '"', page)
+    page = re.sub(r'(<meta property="og:url" content="[^"]*/)[^/"]*"', lambda m: m[1] + cslug + '"', page)
     page = re.sub(r'<h1 class="page-title">.*?</h1>', f'<h1 class="page-title">| {label}</h1>', page)
-    page = re.sub(r'<ul class="gallery">\n.*?\n(\s*)</ul>',
+    page = re.sub(r'<ul class="gallery[^"]*">\n.*?\n(\s*)</ul>',
                   lambda m: f'<ul class="{gallery_class}">\n' + '\n'.join(items) + '\n' + m[1] + '</ul>',
                   page, flags=re.S)
     page = replace_nav(page)
