@@ -285,10 +285,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 .dot-list span { font-size: 22px; }
 
-/* 연락처 (y1264) — 왼쪽 1/4 칸 + 버튼 */
+/* 연락처 */
 .info-contact { margin-top: 59px; }
-.info-contact .dot-list { line-height: 31.2px; }
-.info-contact .dot-list .phone { font-size: 26px; }
+
+/* 전화번호 목록 (홈 연락처, 대량 주문): '가게/휴대폰' 이름 + 번호 + 전화 아이콘 */
+.phone-list { line-height: 31.2px; }
+.phone-list li + li { margin-top: 14px; }
+.phone-list .phone-label { display: inline-block; min-width: 4.2em; font-size: 18px; color: #777; }
+.phone-list .phone { display: inline-block; min-width: 7.3em; font-size: 26px; }   /* 번호 길이가 달라도 아이콘이 세로로 정렬되게 */
 
 
 /* 배달 주문·연락처: 아이콘 자체가 링크 (배달 앱 아이콘, 전화) */
@@ -464,15 +468,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .gallery--plain img { aspect-ratio: 292.5 / 219; }
 .gallery--plain span { padding: 10px 0; }
 
-.bulk-call {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 50px;
-  align-items: start;
-  margin-top: 30px;
-}
 .bulk-call-title { font-size: 22px; font-weight: 700; line-height: 26.8px; white-space: nowrap; }
-.bulk-call-phone { font-size: 22px; line-height: 26.8px; margin-top: -13px; }   /* 아이콘(52px)을 제목 줄 가운데에 맞춤 */
+.bulk-call { margin-top: 30px; }
 .bulk-call + .divider { margin-top: 30px; }
 
 /* 사진 크게 보기: 검정 90% 배경, 위쪽 순번·버튼, 양옆 화살표, 아래 이름 */
@@ -575,8 +572,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .feature-text { font-size: 16px; line-height: 21.6px; }
   .dot-list { line-height: 22px; }
   .dot-list span { font-size: 16px; }
-  .info-contact .dot-list { line-height: 21.6px; }
-  .info-contact .dot-list .phone { font-size: 18px; }
+  .phone-list { line-height: 21.6px; }
+  .phone-list .phone-label { font-size: 14px; }
+  .phone-list .phone { font-size: 18px; }
 }
 
 /* ≤991px: 모바일 레이아웃 (헤더 49px + 메뉴 줄 46px, 1단) */
@@ -655,9 +653,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .gallery--plain img { aspect-ratio: 177.5 / 133; }
   .gallery--plain span { padding: 6.67px 0; }
   .bulk-page .divider { margin-top: 77.5px; }              /* y727 */
-  .bulk-call { display: block; }
   .bulk-call-title { font-size: 16px; line-height: 21.8px; }
-  .bulk-call-phone { margin-top: 16px; font-size: 18px; }
   .bulk-call + .divider { margin-top: 30px; }
   .lb-caption { line-height: 28.8px; }
 }

@@ -19,6 +19,7 @@ CATS = [  # 배민 그룹명, 표시명, 영문 slug
     ('밥/샐러드/기타', '밥 · 샐러드 · 기타', 'rice-etc'),
 ]
 OVERLAY = {'rice-etc'}
+NAMES = {'가지나물 (반찬)': '가지나물'}  # 홈페이지에 바꿔 쓰는 이름
 
 SLUGS = {
     '닭볶음탕': 'dakbokkeumtang', '묵은지김치찜': 'mukeunji-kimchijjim', '청국장': 'cheonggukjang',
@@ -79,7 +80,7 @@ menus = {g: [] for g, _, _ in CATS}
 for line in open(os.path.join(ROOT, 'reference/baemin/menus.tsv'), encoding='utf-8'):
     group, name, _price, url = line.rstrip('\n').split('\t')
     url = None if url == '-' else url.replace('~', PREFIX, 1) if url.startswith('~') else url
-    menus[group].append({'name': name, 'slug': SLUGS[name], 'url': url})
+    menus[group].append({'name': NAMES.get(name, name), 'slug': SLUGS[name], 'url': url})
 
 # ----- 사진: 원본 → <slug>-large.jpg(최대 1280), <slug>.jpg(가로 700), 카테고리 대표 cat-<slug>.jpg(700×525)
 img_root = os.path.join(ROOT, 'images/menu')
