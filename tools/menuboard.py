@@ -4,7 +4,7 @@
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
     --allow-file-access-from-files --force-device-scale-factor=2 --window-size=1240,1754 \
     --screenshot=menu.png file://<출력 html>
-  sips -s format jpeg -s formatOptions 85 menu.png --out files/myungpum-menu.jpg
+  cp menu.png files/myungpum-menu.png   # JPG 는 주황 바탕 흰 글자 주변에 얼룩이 생겨 PNG 로 둠
 """
 import html, os, re, sys
 
