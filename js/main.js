@@ -68,9 +68,10 @@ if (mapEl && mapEl.dataset.lat && mapEl.dataset.lng) {
     });
     const marker = new naver.maps.Marker({ position, map, title: '명품반찬' });
     const info = new naver.maps.InfoWindow({
-      content: '<div style="padding:5px 15px"><p style="margin:0;font-size:15px;font-weight:bold">명품반찬</p></div>',
+      content: '<div style="padding:5px 15px;text-align:center;white-space:nowrap"><p style="margin:0;font-size:15px;font-weight:bold">명품반찬</p></div>',
     });
-    info.open(map, marker);
+    // 이름표 칸 너비는 열 때 한 번 재므로, 웹폰트(SUITE)가 늦게 적용되면 글자가 오른쪽으로 밀림 → 폰트 준비 후 엶
+    document.fonts.ready.then(() => info.open(map, marker));
     naver.maps.Event.addListener(marker, 'click', () => info.open(map, marker));
   }
 
