@@ -75,8 +75,13 @@ if (mapEl && mapEl.dataset.lat && mapEl.dataset.lng) {
         anchor: new naver.maps.Point(15, 40),
       },
     });
+    // 네이버 기본 말풍선(테두리·꼬리)은 끄고 css 의 .map-tag 모양을 씀
     const info = new naver.maps.InfoWindow({
-      content: '<div style="padding:5px 15px;text-align:center;white-space:nowrap"><p style="margin:0;font-size:15px;font-weight:bold">명품반찬</p></div>',
+      content: '<div class="map-tag">명품반찬</div>',
+      borderWidth: 0,
+      backgroundColor: 'transparent',
+      disableAnchor: true,
+      pixelOffset: new naver.maps.Point(0, -6),
     });
     // 이름표 칸 너비는 열 때 한 번 재므로, 웹폰트(SUITE)가 늦게 적용되면 글자가 오른쪽으로 밀림 → 폰트 준비 후 엶
     document.fonts.ready.then(() => info.open(map, marker));
