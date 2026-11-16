@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>계좌이체 결제 안내 | 명품반찬</title>
+  <!-- 결제 안내 전용 페이지: 검색 결과에는 노출하지 않음 -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#fffdf9">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: "SUITE";
+      src: url("fonts/SUITE-ExtraBold.woff2") format("woff2");
+      font-weight: 800;
+      font-display: swap;
+    }
+
+    /* 색은 css/style.css 와 같은 톤 */
+    :root {
+      --text: #3a2e25;
+      --text-soft: #7a6b5d;
+      --bg: #fffdf9;
+      --section-bg: #f8f3ea;
+      --line: #e8dfd2;
+      --orange: #ec5f1f;
+      --kakao: #fee500;
+      --kakao-text: #191600;
+      --toss: #0064ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .wrap {
+      max-width: 440px;
+      margin: 0 auto;
+      padding: 28px 20px calc(32px + env(safe-area-inset-bottom));
+    }
+
+    .logo { display: block; width: 180px; height: auto; margin: 0 auto 22px; }
+
+    h1 {
+      margin: 0 0 4px;
+      font-family: "SUITE", "Noto Sans KR", sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      text-align: center;
+    }
+    .lead { margin: 0 0 22px; text-align: center; color: var(--text-soft); font-size: 14px; }
+
+    /* 계좌 정보 카드 */
+    .account {
+      background: var(--section-bg);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 18px 16px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .account .bank { font-size: 14px; color: var(--text-soft); }
+    .account .number {
+      display: block;
+      margin: 2px 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .account .holder { font-size: 14px; color: var(--text-soft); }
+
+    /* 버튼 */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 56px;
+      margin: 0 0 10px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 12px;
+      font: inherit;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn:active { transform: scale(.985); }
+    .btn-copy { background: var(--text); color: #fff; }
+    .btn-kakao { background: var(--kakao); color: var(--kakao-text); }
+    .btn-toss { background: var(--toss); color: #fff; }
+    .btn small { font-weight: 400; font-size: 13px; opacity: .8; }
+
+    .divider {
+      display: flex; align-items: center; gap: 10px;
+      margin: 18px 0 12px;
+      color: var(--text-soft); font-size: 13px;
+    }
+    .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+    .steps {
+      margin: 22px 0 0;
+      padding: 16px 18px 16px 36px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+    .steps li + li { margin-top: 4px; }
+    .steps b { color: var(--text); }
+
+    .notice { margin: 14px 0 0; font-size: 13px; color: var(--text-soft); text-align: center; }
+    .notice a { color: var(--orange); font-weight: 700; text-decoration: none; }
+
+    /* 복사 완료 등 안내 토스트 */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(28px + env(safe-area-inset-bottom));
+      transform: translate(-50%, 20px);
+      max-width: calc(100% - 40px);
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: rgba(58, 46, 37, .95);
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s, transform .2s;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a href="./"><img class="logo" src="images/logo-header.png" alt="명품반찬" width="233" height="70"></a>
+
+    <h1>계좌이체 결제 안내</h1>
+    <p class="lead">편하신 방법을 골라 결제해 주세요.</p>
+
+    <section class="account" aria-label="입금 계좌">
+      <span class="bank" id="bank"></span>
+      <strong class="number" id="number"></strong>
+      <span class="holder" id="holder"></span>
+    </section>
+
+    <button type="button" class="btn btn-copy" id="btn-copy">
+      계좌번호 복사 <small>· 모든 은행</small>
+    </button>
+
+    <div class="divider" id="divider">또는 앱으로 바로 보내기</div>
+
+    <a class="btn btn-kakao" id="btn-kakao" href="#" hidden>카카오페이로 보내기</a>
+    <a class="btn btn-toss" id="btn-toss" href="#" hidden>토스로 보내기</a>
+
+    <ol class="steps">
+      <li><b>계좌번호 복사</b> 후 쓰시는 은행 앱을 열면<br>대부분 복사한 계좌가 자동으로 떠요.</li>
+      <li>금액을 입력하고 보내주세요.</li>
+      <li>이체 완료 화면을 <b>직원에게 보여주시면</b> 끝!</li>
+    </ol>
+
+    <p class="notice">문의 <a href="tel:010-4347-9919">010-4347-9919</a></p>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* =========================================================
+       ▼ 여기만 수정하세요 ▼
+       계좌가 바뀌어도 이 값만 고치면 되고, 인쇄한 QR 코드는 그대로 쓸 수 있어요.
+       ========================================================= */
+    const PAY = {
+      bankName:  "NH농협은행",          // 화면에 보일 은행 이름 (예: "KB국민은행")
+      account:   "356-1125-7577-83",   // 계좌번호 (하이픈 있어도 됨)
+      holder:    "김민경",          // 예금주
+
+      // 카카오페이 송금코드 링크 (카카오페이 → 송금 → 송금코드 → 공유 → 링크 복사)
+      // 비워 두면("") 카카오페이 버튼이 숨겨집니다.
+      kakaoPayUrl: "",
+
+      // 토스 송금 버튼에 쓸 은행 이름 (토스 앱이 인식하는 짧은 이름, 예: "국민", "신한", "농협", "우리", "하나")
+      // 비워 두면("") 토스 버튼이 숨겨집니다.
+      tossBankName: "농협"
+    };
+    /* ========================================================= */
+
+    const $ = (id) => document.getElementById(id);
+    const digits = PAY.account.replace(/[^0-9]/g, "");
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    // 계좌 정보 표시
+    $("bank").textContent = PAY.bankName;
+    $("number").textContent = PAY.account;
+    $("holder").textContent = "예금주 " + PAY.holder;
+
+    // 안내 토스트
+    let toastTimer;
+    function toast(msg) {
+      const el = $("toast");
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
+    }
+
+    // 계좌번호 복사 (은행 앱이 인식하기 쉽게 "은행명 계좌번호" 형태로)
+    async function copyAccount() {
+      const text = PAY.bankName + " " + PAY.account;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (e) {
+        // 일부 인앱 브라우저용 예비 방법
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e2) {}
+        document.body.removeChild(ta);
+      }
+      toast("복사했어요. 은행 앱을 열어 보내주세요.");
+    }
+    $("btn-copy").addEventListener("click", copyAccount);
+
+    // 카카오페이
+    if (PAY.kakaoPayUrl) {
+      const k = $("btn-kakao");
+      k.href = PAY.kakaoPayUrl;
+      k.hidden = false;
+    }
+
+    // 토스 (휴대폰에서만 표시)
+    if (PAY.tossBankName && isMobile) {
+      const t = $("btn-toss");
+      t.href = "supertoss://send?bank=" + encodeURIComponent(PAY.tossBankName) +
+               "&accountNo=" + digits;
+      t.hidden = false;
+      t.addEventListener("click", () => {
+        // 앱이 열리지 않으면(미설치 등) 계좌번호를 대신 복사해 둠
+        const timer = setTimeout(() => {
+          if (!document.hidden) copyAccount();
+        }, 1800);
+        document.addEventListener("visibilitychange", () => clearTimeout(timer), { once: true });
+      });
+    }
+
+    // 앱 버튼이 하나도 없으면 구분선도 숨김
+    if ($("btn-kakao").hidden && $("btn-toss").hidden) $("divider").hidden = true;
+  </script>
+</body>
+</html>
