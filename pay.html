@@ -78,25 +78,14 @@
     }
     .sub { margin: 2px 0 14px; text-align: center; color: var(--text-soft); font-size: 17px; }
 
-    /* 계좌 정보 */
+    /* 계좌 정보: 흰 카드 + 옅은 그림자 */
     .account {
-      position: relative;
       margin: 0 0 12px;
-      padding: 20px 12px 16px;
-      border: 1px solid #e3d6c3;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #fbf6ee 0%, #f5ecdf 100%);
-      box-shadow: 0 6px 18px rgba(58, 46, 37, .10), 0 1px 3px rgba(58, 46, 37, .06);
+      padding: 22px 12px 18px;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(58, 46, 37, .08), 0 1px 2px rgba(58, 46, 37, .06);
       text-align: center;
-      overflow: hidden;
-    }
-    /* 위쪽 가는 띠: 로고 도장과 같은 붉은색 */
-    .account::before {
-      content: "";
-      position: absolute;
-      left: 0; right: 0; top: 0;
-      height: 5px;
-      background: #a8201a;
     }
     .account .bank { display: block; font-size: 19px; font-weight: 700; }
     .account .number {
