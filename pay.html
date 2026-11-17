@@ -73,23 +73,15 @@
     }
     .sub { margin: 2px 0 14px; text-align: center; color: var(--text-soft); font-size: 17px; }
 
-    /* 계좌 정보 + 복사 버튼 (한 덩어리) */
+    /* 계좌 정보 */
     .account {
-      display: block;
-      width: 100%;
       margin: 0 0 12px;
-      padding: 0;
+      padding: 16px 12px 14px;
       border: 2px solid var(--text);
       border-radius: 16px;
       background: var(--section-bg);
-      color: var(--text);
-      font: inherit;
       text-align: center;
-      overflow: hidden;
-      cursor: pointer;
     }
-    .account:active { transform: scale(.985); }
-    .account .info { display: block; padding: 16px 12px 14px; }
     .account .bank { display: block; font-size: 19px; font-weight: 700; }
     .account .number {
       display: block;
@@ -102,15 +94,6 @@
       white-space: nowrap;
     }
     .account .holder { display: block; font-size: 18px; color: var(--text-soft); }
-    .account .action {
-      display: block;
-      padding: 13px 12px;
-      background: var(--text);
-      color: #fff;
-      font-size: 21px;
-      font-weight: 700;
-    }
-    .account.is-copied .action { background: #2f7d32; }
 
     /* 카카오페이 버튼 */
     .btn {
@@ -239,19 +222,16 @@
 
     <h1>계좌이체 결제 안내</h1>
 
-    <button type="button" class="account" id="btn-copy" aria-label="계좌번호 복사">
-      <span class="info">
-        <span class="bank" id="bank"></span>
-        <strong class="number" id="number"></strong>
-        <span class="holder" id="holder"></span>
-      </span>
-      <span class="action" id="copy-label">눌러서 계좌번호 복사</span>
-    </button>
+    <section class="account" aria-label="입금 계좌">
+      <span class="bank" id="bank"></span>
+      <strong class="number" id="number"></strong>
+      <span class="holder" id="holder"></span>
+    </section>
 
     <a class="btn btn-kakao" id="btn-kakao" href="#" hidden>카카오페이로 보내기</a>
 
     <section class="banks" aria-labelledby="banks-title">
-      <h2 id="banks-title">쓰시는 은행을 눌러주세요</h2>
+      <h2 id="banks-title">이체할 은행을 선택해주세요</h2>
       <p class="sub">계좌번호가 복사되고 은행 앱이 열려요</p>
       <ul class="bank-grid" id="main-banks"></ul>
       <button type="button" class="more-toggle" id="more-toggle" aria-expanded="false" aria-controls="more-banks">다른 은행 더 보기 ▾</button>
@@ -345,7 +325,6 @@
     }
 
     // 계좌번호 복사 (은행 앱이 인식하기 쉽게 "은행명 계좌번호" 형태로)
-    let copyTimer;
     function copyAccount() {
       const text = PAY.bankName + " " + PAY.account;
       let done = false;
@@ -364,17 +343,7 @@
         document.body.removeChild(ta);
       } catch (e) {}
       if (!done && navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
-
-      const btn = $("btn-copy");
-      btn.classList.add("is-copied");
-      $("copy-label").textContent = "✓ 계좌번호가 복사되었어요";
-      clearTimeout(copyTimer);
-      copyTimer = setTimeout(() => {
-        btn.classList.remove("is-copied");
-        $("copy-label").textContent = "눌러서 계좌번호 복사";
-      }, 4000);
     }
-    $("btn-copy").addEventListener("click", copyAccount);
 
     // 앱 여는 주소 만들기
     function appUrl(b) {
