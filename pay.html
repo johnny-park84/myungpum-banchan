@@ -80,12 +80,23 @@
 
     /* 계좌 정보 */
     .account {
+      position: relative;
       margin: 0 0 12px;
-      padding: 16px 12px 14px;
-      border: 2px solid var(--text);
-      border-radius: 16px;
-      background: var(--section-bg);
+      padding: 20px 12px 16px;
+      border: 1px solid #e3d6c3;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fbf6ee 0%, #f5ecdf 100%);
+      box-shadow: 0 6px 18px rgba(58, 46, 37, .10), 0 1px 3px rgba(58, 46, 37, .06);
       text-align: center;
+      overflow: hidden;
+    }
+    /* 위쪽 가는 띠: 로고 도장과 같은 붉은색 */
+    .account::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 5px;
+      background: #a8201a;
     }
     .account .bank { display: block; font-size: 19px; font-weight: 700; }
     .account .number {
@@ -98,7 +109,8 @@
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
-    .account .holder { display: block; font-size: 18px; color: var(--text-soft); }
+    .account .holder { display: block; font-size: 19px; font-weight: 700; color: var(--text); }
+    .account .holder .label { font-weight: 400; color: var(--text-soft); margin-right: 4px; }
 
     /* 카카오페이 버튼 */
     .btn {
@@ -318,7 +330,8 @@
     // 계좌 정보 표시
     $("bank").textContent = PAY.bankName;
     $("number").textContent = PAY.account;
-    $("holder").textContent = "예금주 " + PAY.holder;
+    $("holder").innerHTML = '<span class="label">예금주</span>';
+    $("holder").append(PAY.holder);
 
     // 안내 문구
     let toastTimer;
