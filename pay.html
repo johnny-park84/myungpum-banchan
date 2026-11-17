@@ -143,39 +143,39 @@
     .bank-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 4px 6px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
     .bank-btn {
-      position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      gap: 6px;
       width: 100%;
-      min-height: 62px;
-      padding: 8px 4px 8px 10px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--bg);
+      padding: 10px 2px 8px;
+      border: 0;
+      border-radius: 14px;
+      background: none;
       color: var(--text);
       font: inherit;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       line-height: 1.25;
       text-align: center;
       cursor: pointer;
-      overflow: hidden;
     }
-    .bank-btn::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 6px;
-      background: var(--c, var(--text));
+    .bank-btn img {
+      display: block;
+      width: 58px;
+      height: 58px;
+      border-radius: 15px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, .08);
+      background: #fff;
     }
-    .bank-btn:active { transform: scale(.97); background: var(--section-bg); }
+    .bank-btn:active { transform: scale(.96); background: var(--section-bg); }
 
     .more-toggle {
       display: block;
@@ -297,36 +297,36 @@
     /* 은행 앱 목록
        app:  앱을 여는 주소 (안드로이드·아이폰 공통, 아이폰만 다르면 ios 에 따로 적음)
        pkg:  안드로이드 앱 이름 (앱이 없으면 플레이스토어로 이동)
-       c:    버튼 왼쪽 띠 색
+       icon: images/banks/ 안의 아이콘 파일 이름 (구글 플레이스토어의 각 은행 공식 앱 아이콘)
        아이폰 주소 중 확인되지 않은 것은 열리지 않을 수 있어요. 그래도 계좌번호는 복사돼 있어요. */
     const TOSS = "supertoss://send?bank=" + encodeURIComponent(PAY.tossBankName) + "&accountNo=" + digits;
     const MAIN_BANKS = [
-      { name: "국민은행",     c: "#ffbc00", app: "kbbank://call", ios: "kbbank://",            pkg: "com.kbstar.kbbank" },
-      { name: "신한은행",     c: "#0046ff", app: "shinhansol://", ios: "shinhanSol://",        pkg: "com.shinhan.sbanking" },
-      { name: "우리은행",     c: "#0067ac", app: "wooribank://",  ios: "NewSmartPib://",       pkg: "com.wooribank.smart.npib" },
-      { name: "하나은행",     c: "#009490", app: "hanabank-oqf://",                            pkg: "com.hanabank.oqf" },
-      { name: "NH\n스마트뱅킹", c: "#00a84f", app: "newnhsmartbanking://",                     pkg: "nh.smart.banking" },
-      { name: "NH콕뱅크",     c: "#00a84f", app: "nhcok://",                                   pkg: "nh.smart.nhcok" },
-      { name: "IBK기업",      c: "#004ea2", app: "ionebank://",                                pkg: "com.ibk.android.ionebank" },
-      { name: "카카오뱅크",   c: "#ffe300", app: "kakaobank://",                               pkg: "com.kakaobank.channel" },
-      { name: "토스",         c: "#0064ff", app: TOSS,                                         pkg: "" },
-      { name: "케이뱅크",     c: "#1b2d6b", app: "ukbanksmartbankshortcut://", ios: "ukbanksmartbankrelay://", pkg: "com.kbankwith.smartbank" },
-      { name: "SC제일",       c: "#0473ea", app: "scbmobile://",                               pkg: "com.scbank.ma30" },
-      { name: "씨티은행",     c: "#003b70", app: "citimobileapp://smartpay",                   pkg: "kr.co.citibank.citimobile" }
+      { name: "국민은행",     icon: "kb", app: "kbbank://call", ios: "kbbank://",            pkg: "com.kbstar.kbbank" },
+      { name: "신한은행",     icon: "shinhan", app: "shinhansol://", ios: "shinhanSol://",        pkg: "com.shinhan.sbanking" },
+      { name: "우리은행",     icon: "woori", app: "wooribank://",  ios: "NewSmartPib://",       pkg: "com.wooribank.smart.npib" },
+      { name: "하나은행",     icon: "hana", app: "hanabank-oqf://",                            pkg: "com.hanabank.oqf" },
+      { name: "NH스마트뱅킹", icon: "nh-smart", app: "newnhsmartbanking://",                     pkg: "nh.smart.banking" },
+      { name: "NH콕뱅크",     icon: "nh-cok", app: "nhcok://",                                   pkg: "nh.smart.nhcok" },
+      { name: "IBK기업",      icon: "ibk", app: "ionebank://",                                pkg: "com.ibk.android.ionebank" },
+      { name: "카카오뱅크",   icon: "kakaobank", app: "kakaobank://",                               pkg: "com.kakaobank.channel" },
+      { name: "토스",         icon: "toss", app: TOSS,                                         pkg: "" },
+      { name: "케이뱅크",     icon: "kbank", app: "ukbanksmartbankshortcut://", ios: "ukbanksmartbankrelay://", pkg: "com.kbankwith.smartbank" },
+      { name: "SC제일",       icon: "sc", app: "scbmobile://",                               pkg: "com.scbank.ma30" },
+      { name: "씨티은행",     icon: "citi", app: "citimobileapp://smartpay",                   pkg: "kr.co.citibank.citimobile" }
     ];
     const MORE_BANKS = [
-      { name: "우체국",       c: "#e60012", app: "com.epost.psf.sd://",                        pkg: "com.epost.psf.sdsi" },
-      { name: "새마을금고",   c: "#0e4ea1", app: "kfccsb://",                                  pkg: "com.smg.spbs" },
-      { name: "신협",         c: "#0079c1", app: "cuonbank://onbank.cu.co.kr?SCHEME_ACTION=REQUEST_SCHEME_WIDGET_TRANSFER&SCHEME_PARAM=", pkg: "kr.co.cu.onbank" },
-      { name: "SBI저축은행",  c: "#0071bc", app: "sbi://sbi_url",                              pkg: "com.sbi.saidabank" },
-      { name: "부산은행",     c: "#d6001c", app: "bslink://call",                              pkg: "kr.co.busanbank.mbp" },
-      { name: "경남은행",     c: "#d6001c", app: "alopex://psb",                               pkg: "com.knb.psb" },
-      { name: "광주은행",     c: "#0b3d91", app: "kjbank://asb",                               pkg: "com.kjbank.asb.pbanking" },
-      { name: "전북은행",     c: "#0b3d91", app: "jbprivatebank://",                           pkg: "kr.co.jbbank.privatebank" },
-      { name: "제주은행",     c: "#0b3d91", app: "newjbanksmart://action",                     pkg: "com.jejubank.smartnew" },
-      { name: "iM뱅크",       c: "#00a29a", app: "mbanking://open",                            pkg: "kr.co.dgb.dgbm" },
-      { name: "산업은행",     c: "#00468b", app: "smartkdbnvs://",                             pkg: "co.kr.kdb.android.smartkdb" },
-      { name: "수협은행",     c: "#0071bc", app: "suhyuppsmb://suhyuplink",                    pkg: "com.suhyup.psmb" }
+      { name: "우체국",       icon: "epost", app: "com.epost.psf.sd://",                        pkg: "com.epost.psf.sdsi" },
+      { name: "새마을금고",   icon: "mg", app: "kfccsb://",                                  pkg: "com.smg.spbs" },
+      { name: "신협",         icon: "cu", app: "cuonbank://onbank.cu.co.kr?SCHEME_ACTION=REQUEST_SCHEME_WIDGET_TRANSFER&SCHEME_PARAM=", pkg: "kr.co.cu.onbank" },
+      { name: "SBI저축은행",  icon: "sbi", app: "sbi://sbi_url",                              pkg: "com.sbi.saidabank" },
+      { name: "부산은행",     icon: "busan", app: "bslink://call",                              pkg: "kr.co.busanbank.mbp" },
+      { name: "경남은행",     icon: "kyongnam", app: "alopex://psb",                               pkg: "com.knb.psb" },
+      { name: "광주은행",     icon: "kwangju", app: "kjbank://asb",                               pkg: "com.kjbank.asb.pbanking" },
+      { name: "전북은행",     icon: "jeonbuk", app: "jbprivatebank://",                           pkg: "kr.co.jbbank.privatebank" },
+      { name: "제주은행",     icon: "jeju", app: "newjbanksmart://action",                     pkg: "com.jejubank.smartnew" },
+      { name: "iM뱅크",       icon: "im", app: "mbanking://open",                            pkg: "kr.co.dgb.dgbm" },
+      { name: "산업은행",     icon: "kdb", app: "smartkdbnvs://",                             pkg: "co.kr.kdb.android.smartkdb" },
+      { name: "수협은행",     icon: "suhyup", app: "suhyuppsmb://suhyuplink",                    pkg: "com.suhyup.psmb" }
     ];
 
     // 계좌 정보 표시
@@ -415,9 +415,15 @@
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "bank-btn";
-        btn.style.setProperty("--c", b.c);
-        btn.textContent = b.name;
-        btn.style.whiteSpace = "pre-line";
+        const img = document.createElement("img");
+        img.src = "images/banks/" + b.icon + ".png";
+        img.alt = "";
+        img.width = 58;
+        img.height = 58;
+        img.loading = "lazy";
+        const label = document.createElement("span");
+        label.textContent = b.name.replace("\n", " ");
+        btn.append(img, label);
         btn.addEventListener("click", () => openBank(b));
         li.appendChild(btn);
         ul.appendChild(li);
