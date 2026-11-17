@@ -367,7 +367,7 @@
 
       const btn = $("btn-copy");
       btn.classList.add("is-copied");
-      $("copy-label").textContent = "✓ 복사됐어요";
+      $("copy-label").textContent = "✓ 계좌번호가 복사되었어요";
       clearTimeout(copyTimer);
       copyTimer = setTimeout(() => {
         btn.classList.remove("is-copied");
@@ -397,12 +397,13 @@
     function openBank(b) {
       copyAccount();
       if (!isAndroid && !isIOS) {
-        toast("계좌번호를 복사했어요. 휴대폰에서 은행 앱을 열어 보내주세요.");
+        toast("계좌번호가 복사되었어요.\n휴대폰에서 은행 앱을 열어 보내주세요.");
         return;
       }
+      toast("계좌번호가 복사되었어요");
       const timer = setTimeout(() => {
         if (!document.hidden) {
-          toast(b.name.replace("\n", " ") + " 앱이 열리지 않았어요.\n계좌번호는 복사돼 있으니 은행 앱을 직접 열어주세요.", 5000);
+          toast(b.name.replace("\n", " ") + " 앱이 열리지 않았어요.\n계좌번호가 복사되었으니 은행 앱을 직접 열어주세요.", 5000);
         }
       }, 2000);
       document.addEventListener("visibilitychange", () => clearTimeout(timer), { once: true });
