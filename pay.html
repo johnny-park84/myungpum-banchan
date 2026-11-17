@@ -123,7 +123,7 @@
     /* 은행 선택 */
     .banks {
       margin: 22px 0 0;
-      padding: 18px 12px 14px;
+      padding: 18px 8px 14px;
       border: 1px solid var(--line);
       border-radius: 16px;
       background: #fff;
@@ -149,17 +149,18 @@
       background: none;
       color: var(--text);
       font: inherit;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       line-height: 1.25;
       text-align: center;
+      overflow-wrap: anywhere;
       cursor: pointer;
     }
     .bank-btn img {
       display: block;
-      width: 58px;
-      height: 58px;
-      border-radius: 15px;
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
       box-shadow: 0 0 0 1px rgba(0, 0, 0, .08);
       background: #fff;
     }
@@ -290,7 +291,7 @@
       { name: "신한은행",     icon: "shinhan", app: "shinhansol://", ios: "shinhanSol://",        pkg: "com.shinhan.sbanking" },
       { name: "우리은행",     icon: "woori", app: "wooribank://",  ios: "NewSmartPib://",       pkg: "com.wooribank.smart.npib" },
       { name: "하나은행",     icon: "hana", app: "hanabank-oqf://",                            pkg: "com.hanabank.oqf" },
-      { name: "NH스마트뱅킹", icon: "nh-smart", app: "newnhsmartbanking://",                     pkg: "nh.smart.banking" },
+      { name: "NH 스마트뱅킹", icon: "nh-smart", app: "newnhsmartbanking://",                     pkg: "nh.smart.banking" },
       { name: "NH콕뱅크",     icon: "nh-cok", app: "nhcok://",                                   pkg: "nh.smart.nhcok" },
       { name: "IBK기업",      icon: "ibk", app: "ionebank://",                                pkg: "com.ibk.android.ionebank" },
       { name: "카카오뱅크",   icon: "kakaobank", app: "kakaobank://",                               pkg: "com.kakaobank.channel" },
@@ -303,7 +304,7 @@
       { name: "우체국",       icon: "epost", app: "com.epost.psf.sd://",                        pkg: "com.epost.psf.sdsi" },
       { name: "새마을금고",   icon: "mg", app: "kfccsb://",                                  pkg: "com.smg.spbs" },
       { name: "신협",         icon: "cu", app: "cuonbank://onbank.cu.co.kr?SCHEME_ACTION=REQUEST_SCHEME_WIDGET_TRANSFER&SCHEME_PARAM=", pkg: "kr.co.cu.onbank" },
-      { name: "SBI저축은행",  icon: "sbi", app: "sbi://sbi_url",                              pkg: "com.sbi.saidabank" },
+      { name: "SBI 저축은행",  icon: "sbi", app: "sbi://sbi_url",                              pkg: "com.sbi.saidabank" },
       { name: "부산은행",     icon: "busan", app: "bslink://call",                              pkg: "kr.co.busanbank.mbp" },
       { name: "경남은행",     icon: "kyongnam", app: "alopex://psb",                               pkg: "com.knb.psb" },
       { name: "광주은행",     icon: "kwangju", app: "kjbank://asb",                               pkg: "com.kjbank.asb.pbanking" },
@@ -393,8 +394,8 @@
         const img = document.createElement("img");
         img.src = "images/banks/" + b.icon + ".png";
         img.alt = "";
-        img.width = 58;
-        img.height = 58;
+        img.width = 70;
+        img.height = 70;
         img.loading = "lazy";
         const label = document.createElement("span");
         label.textContent = b.name.replace("\n", " ");
