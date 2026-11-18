@@ -410,6 +410,12 @@
     renderBanks(MAIN_BANKS, $("main-banks"));
     renderBanks(MORE_BANKS, $("more-banks"));
 
+    // 계좌번호 패널을 누르면 계좌번호 복사
+    document.querySelector(".account").addEventListener("click", () => {
+      copyAccount();
+      toast("계좌번호가 복사되었어요");
+    });
+
     $("more-toggle").addEventListener("click", () => {
       const more = $("more-banks");
       const open = more.hidden;
