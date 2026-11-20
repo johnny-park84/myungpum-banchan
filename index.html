@@ -269,5 +269,12 @@
   <script src="js/main.js?v=202611081200"></script>
   <!-- 네이버 지도 API (Client ID: 네이버 클라우드 Maps Application). 준비되면 main.js 의 initNaverMap 호출 -->
   <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=wmuqkr3n6z&amp;callback=initNaverMap" async></script>
+  <!-- 네이버 애널리틱스 -->
+  <script src="https://wcs.naver.net/wcslog.js"></script>
+  <script>
+    if (!wcs_add) var wcs_add = {};
+    wcs_add["wa"] = "864d7d239810b0";
+    if (window.wcs) { wcs_do(); }
+  </script>
 </body>
 </html>
