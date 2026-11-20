@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.xn--v42bw2a273as8h.com/sitemap.xml

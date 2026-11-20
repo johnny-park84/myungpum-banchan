@@ -129,7 +129,7 @@ def replace_nav(text):
 template = open(os.path.join(ROOT, 'soup.html'), encoding='utf-8').read()
 for group, label, cslug in CATS:
     names = ', '.join(m['name'] for m in menus[group])
-    desc = html.escape(f'명품반찬 {label}: {names}', quote=True)
+    desc = html.escape(f'강동구 반찬가게 명품반찬 {label}: {names}', quote=True)
     items = []
     for i, m in enumerate(menus[group]):
         lazy = ' loading="lazy"' if i >= 8 else ''
@@ -140,15 +140,16 @@ for group, label, cslug in CATS:
         else:
             big = small = 'images/menu/no-image.gif'
             wh = 'width="600" height="400"'
-        items.append(f'        <li><a href="{big}"><img src="{small}" alt="" {wh}{lazy}><span>{name}</span></a></li>')
+        items.append(f'        <li><a href="{big}"><img src="{small}" alt="{name}" {wh}{lazy}><span>{name}</span></a></li>')
     gallery_class = 'gallery gallery--overlay' if cslug in OVERLAY else 'gallery'
 
     page = template
-    page = re.sub(r'<title>.*?</title>', f'<title>{label} | 명품반찬</title>', page)
+    page = re.sub(r'<title>.*?</title>', f'<title>{label} | 강동구 반찬가게 명품반찬</title>', page)
     page = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m[1] + desc, page)
     page = re.sub(r'(<meta property="og:title" content=")[^"]*', lambda m: m[1] + f'{label} | 명품반찬', page)
     page = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m[1] + desc, page)
     page = re.sub(r'(<meta property="og:url" content="[^"]*/)[^/"]*"', lambda m: m[1] + cslug + '"', page)
+    page = re.sub(r'(<link rel="canonical" href="[^"]*/)[^/"]*"', lambda m: m[1] + cslug + '"', page)
     page = re.sub(r'<h1 class="page-title">.*?</h1>', f'<h1 class="page-title">| {label}</h1>', page)
     page = re.sub(r'<ul class="gallery[^"]*">\n.*?\n(\s*)</ul>',
                   lambda m: f'<ul class="{gallery_class}">\n' + '\n'.join(items) + '\n' + m[1] + '</ul>',
@@ -158,7 +159,7 @@ for group, label, cslug in CATS:
 
 # ----- 메뉴 페이지 타일
 tiles = '\n'.join(
-    f'        <li><a href="{s}"><img src="images/menu/cat-{s}.jpg" alt="" width="700" height="525"><span>{label}</span></a></li>'
+    f'        <li><a href="{s}"><img src="images/menu/cat-{s}.jpg" alt="{label}" width="700" height="525"><span>{label}</span></a></li>'
     for _, label, s in CATS)
 for fname in ['index.html', 'menu.html', 'bulk.html']:
     path = os.path.join(ROOT, fname)
